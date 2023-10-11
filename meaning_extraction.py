@@ -142,4 +142,6 @@ df = df.drop_duplicates()
 no_entry = df['Meaning'].isnull().sum()
 print("No entry in the dictionary was found for " + str(no_entry) + " compounds.")
 
-df.to_csv('duden_result.txt', sep='\t', index=False)
+df = df.dropna()
+
+df.to_csv('dataset_with_meanings.txt', sep='\t', index=False)
