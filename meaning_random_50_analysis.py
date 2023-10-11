@@ -172,11 +172,9 @@ random_50 = random_50.drop_duplicates()
 no_entry = random_50['Meaning'].isnull().sum()
 print("No entry in the dictionary was found for " + str(no_entry) + " compounds.")
 
-
-
-random_50.to_csv('random_50_duden_result.txt', sep='\t', index=False)
-
-# Creates a data set without the unpreprocessed data
+# Creates a data set without the unpreprocessed data and without rows with None entries
 without_raw = random_50.drop('Raw_Meaning', axis=1)
+
+without_raw = without_raw.dropna()             
 
 without_raw.to_csv('random_50_duden_result_preprocessed.txt', sep='\t', index=False)
