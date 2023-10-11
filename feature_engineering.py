@@ -2,11 +2,10 @@
 """
 
 import pandas as pd
-import re
 from collections import Counter
 import features
 
-df = pd.read_csv('clean_amr.txt', sep="\t", header=0)
+df = pd.read_csv('dataset_with_amrs.txt', sep="\t", header=0)
 
 df = df[["AMR", "Relation"]]
 
