@@ -6,6 +6,9 @@ import pandas as pd
 
 df = pd.read_csv('dataset_with_translations.txt', sep="\t", header=0)
 
+# For the analysis data set from meaning_random_50_analysis.py use the following line instead
+# df = pd.read_csv('random_50_dataset_with_translations.txt', sep='\t', header=0)
+
 translations = []
 amrs = []
 
@@ -19,12 +22,17 @@ for graph in graphs:
     
 df['AMR'] = amrs
 
+for index, row in df.iterrows():
+    amr = row['AMR']
+    start = amr.find('\n(')
+    clean_entry = amr[start:]
+    df.at[index,'AMR'] = clean_entry
+
 df.to_csv('dataset_with_amrs.txt', sep='\t', index=False)
+
 
 # The following lines are only necessary for the data set created in meaning_random_50_analysis.py since a sorted data set is easier to analyze
 
 # df = df.sort_values(by=['Relation'])
 
-# selection = df[['Compound', 'Relation', 'Meaning', 'Translation']]
-
-# selection.to_csv('sorted.txt', sep='\t', index=False)
+# df.to_csv('random_50_dataset_with_amrs_sorted.txt', sep='\t', index=False)
