@@ -1,6 +1,8 @@
 """This file parses Abstract Meaning Representations from paraphrases of compounds.
 """
 
+# The model "model_parse_xfm_bart_large-v0_1_0" needs to be installed to execute the code in this file, it can be found here : https://github.com/bjascob/amrlib-models/releases
+
 import amrlib
 import pandas as pd
 
